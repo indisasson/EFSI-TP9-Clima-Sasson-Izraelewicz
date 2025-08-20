@@ -6,52 +6,53 @@ const CurrentWeather = ({ currentWeather }) => {
 
   return (
     <>
-      <h1>{}</h1>
-      <div class="weather-app">
-        //Clima actual
-        <div class="current-weather">
-          <div class="temp">-1°</div>
-          <div class="city-time">
-            <h2>{currentWeather?.city?.name}</h2>
-            <p>
-              {new Date().toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </p>
-          </div>
-          <div class="details">
-            <p>
+
+      <div className="weather-app">
+        <div className="current-weather glass-bg">
+          <div className="cw-left">
+            <div className="temp">{Math.round(currentWeather?.list?.[0]?.main?.temp - 273.15)}°</div>
+            <div className="weather-icon">
               <img 
                 src={`http://openweathermap.org/img/wn/${currentWeather?.list?.[0]?.weather?.[0]?.icon}@2x.png`} 
                 alt={currentWeather?.list?.[0]?.weather?.[0]?.description} 
               />
-            </p>
-            <p>{currentWeather?.list?.[0]?.weather?.[0]?.description}</p>
-            <p>💨 {currentWeather?.list?.[0]?.wind?.speed} m/s</p>
-            <p>Sensación: {currentWeather?.list?.[0]?.main?.feels_like}°C</p>
-            <p>
-              {currentWeather?.list?.[0]?.main?.temp_min}° a{" "}
-              {currentWeather?.list?.[0]?.main?.temp_max}°
-            </p>
-
-            
+            </div>
+          </div>
+          <div className="cw-center">
+            <div className="city">{currentWeather?.city?.name}</div>
+            <div className="time">{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
+            <div className="desc">{currentWeather?.list?.[0]?.weather?.[0]?.description}</div>
+          </div>
+          <div className="cw-right">
+            <div className="detail-row">
+              <span className="detail-icon">💨</span>
+              <span>{currentWeather?.list?.[0]?.wind?.speed} m/s</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-icon">🌡️</span>
+              <span>Sensación: {Math.round(currentWeather?.list?.[0]?.main?.feels_like - 273.15)}°C</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-icon">🔻</span>
+              <span>{Math.round(currentWeather?.list?.[0]?.main?.temp_min - 273.15)}°</span>
+              <span className="detail-icon">🔺</span>
+              <span>{Math.round(currentWeather?.list?.[0]?.main?.temp_max - 273.15)}°</span>
+            </div>
           </div>
         </div>
-        //Pronóstico por hora
         <div className="daily-forecast">
-        {currentWeather?.list?.map((item, index) => (
-            <div className="card" key={index}>
-            <p>{new Date(item.dt_txt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-            <img 
+          {currentWeather?.list?.slice(0, 8).map((item, index) => (
+            <div className="card glass-bg" key={index}>
+              <div className="hour">{new Date(item.dt_txt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+              <img 
                 src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} 
                 alt={item.weather[0].description} 
-            />
-            <p>{Math.round(item.main.temp - 273.15)}°</p>
+              />
+              <div className="hour-temp">{Math.round(item.main.temp - 273.15)}°</div>
             </div>
-        ))}
+          ))}
         </div>
-        </div>
+      </div>
 
     </>
   );
