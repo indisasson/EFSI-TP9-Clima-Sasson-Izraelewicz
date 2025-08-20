@@ -21,7 +21,7 @@ function App() {
   
   useEffect(() => {
     axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&cnt=5&appid=f58c23f9cb9a680007eb17d913aa7b8c`)
+      .get(`https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&appid=f58c23f9cb9a680007eb17d913aa7b8c`)
       .then((res) => setCurrentWeather(res.data))
       .catch((err) => console.error("Error al cargar el clima:", err));
   }, [selectedCity]);
@@ -48,7 +48,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout/>}>
-            <Route path='/CurrentWhether' element={<CurrentWeather currentWeather={currentWeather} setCurrentWeather={setCurrentWeather}/>}></Route>
+            <Route path='/CurrentWhether' element={<CurrentWeather currentWeather={currentWeather} />}></Route>
             <Route path='/DailyForecast' element={<DailyForecast/>}></Route>
             <Route path='/HourlyForecast' element={<HourlyForecast/>}></Route>
             <Route path='/CityWeather' element={<CityWeather/>}></Route>

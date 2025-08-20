@@ -1,72 +1,61 @@
-import '../styles/CurrentWeather.css'
+import "../styles/CurrentWeather.css";
 
-const CurrentWeather = ({currentWeather, setCurrentWeather}) => {
-    return(
-        <>
-            <h1>{}</h1>
-            <div class="weather-app">
-                //Clima actual
-                <div class="current-weather">
-                <div class="temp">-1°</div>
-                <div class="city-time">
-                    <h2>{currentWeather.name}</h2>
-                    <p>{new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</p>
-                </div>
-                <div class="details">
-                    <p>❄️ Snow</p>
-                    <p>💨 5.14 m/s</p>
-                    <p>Sensación: -4°C</p>
-                    <p>-7° a 3°</p>
-                </div>
-                </div>
+const CurrentWeather = ({ currentWeather }) => {
 
-                //Pronóstico por hora
-                <div class="hourly-forecast">
-                <div class="card">
-                    <p>9:00 AM</p>
-                    <p>❄️</p>
-                    <p>-1°</p>
-                </div>
-                <div class="card">
-                    <p>12:00 PM</p>
-                    <p>🌧️</p>
-                    <p>0°</p>
-                </div>
-                <div class="card">
-                    <p>3:00 PM</p>
-                    <p>☁️</p>
-                    <p>1°</p>
-                </div>
-                <div class="card">
-                    <p>6:00 PM</p>
-                    <p>☀️</p>
-                    <p>3°</p>
-                </div>
-                <div class="card">
-                    <p>9:00 PM</p>
-                    <p>🌙</p>
-                    <p>2°</p>
-                </div>
-                <div class="card">
-                    <p>12:00 AM</p>
-                    <p>🌩️</p>
-                    <p>1°</p>
-                </div>
-                <div class="card">
-                    <p>3:00 AM</p>
-                    <p>🌧️</p>
-                    <p>1°</p>
-                </div>
-                <div class="card">
-                    <p>6:00 AM</p>
-                    <p>☁️</p>
-                    <p>0°</p>
-                </div>
-                </div>
+
+
+  return (
+    <>
+      <h1>{}</h1>
+      <div class="weather-app">
+        //Clima actual
+        <div class="current-weather">
+          <div class="temp">-1°</div>
+          <div class="city-time">
+            <h2>{currentWeather?.city?.name}</h2>
+            <p>
+              {new Date().toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
+          </div>
+          <div class="details">
+            <p>
+              <img 
+                src={`http://openweathermap.org/img/wn/${currentWeather?.list?.[0]?.weather?.[0]?.icon}@2x.png`} 
+                alt={currentWeather?.list?.[0]?.weather?.[0]?.description} 
+              />
+            </p>
+            <p>{currentWeather?.list?.[0]?.weather?.[0]?.description}</p>
+            <p>💨 {currentWeather?.list?.[0]?.wind?.speed} m/s</p>
+            <p>Sensación: {currentWeather?.list?.[0]?.main?.feels_like}°C</p>
+            <p>
+              {currentWeather?.list?.[0]?.main?.temp_min}° a{" "}
+              {currentWeather?.list?.[0]?.main?.temp_max}°
+            </p>
+
+            
+          </div>
+        </div>
+        //Pronóstico por hora
+        <div className="daily-forecast">
+        {currentWeather?.list?.map((item, index) => (
+            <div className="card" key={index}>
+            <p>{new Date(item.dt_txt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+            <img 
+                src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} 
+                alt={item.weather[0].description} 
+            />
+            <p>{Math.round(item.main.temp - 273.15)}°</p>
             </div>
-        </>
-    )
-}
+        ))}
+        </div>
+        </div>
+
+    </>
+  );
+};
 export default CurrentWeather;
 //para representar el clima actual de una ubicación.
 
@@ -127,4 +116,4 @@ const CurrentWeather = ({ currentWeather }) => {
 
 export default CurrentWeather;
 
-*/ 
+*/
