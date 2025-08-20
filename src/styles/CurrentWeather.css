@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    background: #0f1a2b;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .weather-app {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* Panel lateral (clima actual) */
+  .current-weather {
+    background: #1c2a3a;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .current-weather .temp {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .current-weather .city-time h2 {
+    font-size: 1.5rem;
+  }
+  
+  .current-weather .details {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+  
+  /* Pronóstico por hora */
+  .hourly-forecast {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: #1c2a3a;
+    padding: 1rem;
+    border-radius: 1rem;
+    overflow-x: auto;
+  }
+  
+  .hourly-forecast .card {
+    background: #2b3b4e;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    text-align: center;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  
+  .hourly-forecast .card p:first-child {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .hourly-forecast .card p:nth-child(2) {
+    font-size: 1.5rem;
+  }
+  
+  .hourly-forecast .card p:last-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  

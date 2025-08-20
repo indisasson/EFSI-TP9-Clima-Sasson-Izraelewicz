@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+//import api from './API/api.js'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './components/Layout.jsx'
+import CurrentWeather from './components/CurrentWeather.jsx'
+import DailyForecast from './components/DailyForecast.jsx'
+import CityWeather from './components/CityWeather .jsx'
+import HourlyForecast from './components/HourlyForecast.jsx'
+import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
+
+  const [currentWeather, setCurrentWeather] = useState(null);
+  /*const [hourlyForecast, setHourlyForecast] = useState([]);
+  const [dailyForecast, setDailyForecast] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");*/
+
+  const [selectedCity, setSelectedCity] = useState("salta");
+  
+  useEffect(() => {
+    axios
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&cnt=5&appid=f58c23f9cb9a680007eb17d913aa7b8c`)
+      .then((res) => setCurrentWeather(res.data))
+      .catch((err) => console.error("Error al cargar el clima:", err));
+  }, [selectedCity]);
+
+  /*const handleCitySearch = (city) => {
+    // Update selected city
+  };
+
+  const handleTemperatureUnitChange = (unit) => {
+    // Update temperature unit (Celsius or Fahrenheit)
+  };
+
+  const handleSearchQueryChange = (event) => {
+    // Update search query
+  };
+
+  const handleSearch = () => {
+    // Trigger city search
+  };*/
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="weather-app">{/* Render weather app components */}</div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout/>}>
+            <Route path='/CurrentWhether' element={<CurrentWeather currentWeather={currentWeather} setCurrentWeather={setCurrentWeather}/>}></Route>
+            <Route path='/DailyForecast' element={<DailyForecast/>}></Route>
+            <Route path='/HourlyForecast' element={<HourlyForecast/>}></Route>
+            <Route path='/CityWeather' element={<CityWeather/>}></Route>
+
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      
     </>
-  )
+    
+  );
+  
 }
 
 export default App
