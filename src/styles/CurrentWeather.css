@@ -1,4 +1,82 @@
-/* CurrentWeather.css */
+/* CurrentWeather styles */
+.current-weather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(30, 30, 47, 0.7);
+  border-radius: 18px;
+  padding: 32px 36px;
+  margin-bottom: 24px;
+  min-height: 140px;
+  gap: 32px;
+}
+.cw-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 110px;
+}
+.cw-left .temp {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.weather-icon img {
+  width: 54px;
+  height: 54px;
+}
+.cw-center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.cw-center .city {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.cw-center .time {
+  font-size: 15px;
+  color: #b0b0b0;
+}
+.cw-center .desc {
+  font-size: 16px;
+  color: #b0b0b0;
+  text-transform: capitalize;
+}
+.cw-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 160px;
+}
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+}
+.detail-icon {
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  .current-weather {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 18px 10px;
+  }
+  .cw-right {
+    align-items: flex-start;
+    min-width: unset;
+  }
+  .cw-center {
+    align-items: flex-start;
+  }
+}
 
 /* Contenedor principal */
 .weather-app {
