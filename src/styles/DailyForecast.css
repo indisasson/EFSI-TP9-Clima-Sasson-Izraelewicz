@@ -1,6 +1,6 @@
 /* DailyForecast styles (5-day forecast) */
 .five-day-forecast {
-  background: rgba(30, 30, 47, 0.7);
+  background: #20293A(30, 30, 47, 0.7);
   border-radius: 18px;
   padding: 24px 32px 18px 32px;
   margin-bottom: 24px;
@@ -9,7 +9,7 @@
   max-width: 900px;   /* antes 520px */
   margin-left: 200px;
   margin-right: auto;
-  margin-top: 170px;
+  margin-top: 9px;
 }
 .fdf-title {
   font-size: 20px;

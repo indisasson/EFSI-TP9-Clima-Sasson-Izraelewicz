@@ -7,8 +7,34 @@
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
+  margin-left: 200px;
  
 }
+/* Dark theme */
+body.theme-dark .hourly-forecast {
+  background: rgba(30, 30, 47, 0.7);
+}
+body.theme-dark .hf-card {
+  background: rgba(44, 44, 62, 0.9);
+}
+body.theme-dark .hf-hour {
+  color: #b0b0b0;
+}
+
+/* Light theme */
+body.theme-light .hourly-forecast {
+  background: rgba(255, 255, 255, 0.9);
+  color:#333;
+  box-shadow:rgba(30, 30, 47, 0.7); ;
+}
+
+body.theme-light .hf-card {
+  background: rgba(235, 235, 235, 0.9);
+}
+body.theme-light .hf-hour {
+  color: #333;
+}
+
 .hf-title {
   font-size: 18px;
   font-weight: 600;

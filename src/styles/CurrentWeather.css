@@ -10,6 +10,7 @@
   margin-bottom: 24px;
   min-height: 140px;
   gap: 32px;
+  width: 420px
 }
 .cw-left {
   display: flex;
