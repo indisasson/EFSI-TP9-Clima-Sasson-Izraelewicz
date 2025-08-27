@@ -1,54 +1,73 @@
-/* CityWeather styles */
 .city-weather {
   background: rgba(30, 30, 47, 0.7);
   border-radius: 18px;
-  padding: 24px 32px 18px 32px;
-  margin-bottom: 24px;
+  padding: 24px 32px;
+  margin-bottom: 32px; /* un poco más de aire */
   color: #fff;
-  max-width: 340px;
-  margin-left: 0;
+  width: 100%;
+  max-width: 900px;  /* antes 520px */
+  margin-left: auto;
   margin-right: auto;
 }
+
 .cw-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   letter-spacing: 1px;
 }
+
 .cw-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
+
 .cw-card {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background: rgba(44, 44, 62, 0.9);
-  border-radius: 12px;
-  padding: 12px 16px;
-  gap: 16px;
+  border-radius: 14px;
+  padding: 16px 20px;
+  gap: 12px;
+  min-height: 70px;
+  width: 400px;
 }
+
+.cw-city-country {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;   /* más ancho */
+  word-break: break-word; /* permite cortar en varias líneas si es necesario */
+}
+
 .cw-city {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  min-width: 90px;
 }
+
 .cw-country {
-  font-size: 13px;
+  font-size: 14px;
   color: #b0b0b0;
-  min-width: 30px;
 }
+
 .cw-icon img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
 }
+
 .cw-temp {
   font-size: 18px;
   font-weight: 600;
-  min-width: 36px;
+  min-width: 40px;
+  text-align: right;
 }
+
 .cw-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: #b0b0b0;
   text-transform: capitalize;
+  min-width: 90px;
+  text-align: right;
 }

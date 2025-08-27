@@ -8,8 +8,8 @@ const HourlyForecast = ({ forecastList }) => {
 	const toTemp = (k) =>
 		unit === "C" ? Math.round(k - 273.15) : Math.round((k - 273.15) * 9/5 + 32);
 	return (
-		<div className="hourly-forecast glass-bg">
-			<h3 className="hf-title">Next 24h</h3>
+		<div className="hourly-forecastje">
+			<h3 className="hf-title">Próximas horas</h3>
 			<div className="hf-list">
 				{forecastList.slice(0, 8).map((item, i) => (
 					<div className="hf-card" key={i}>

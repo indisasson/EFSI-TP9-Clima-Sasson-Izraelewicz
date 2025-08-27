@@ -5,9 +5,11 @@
   padding: 24px 32px 18px 32px;
   margin-bottom: 24px;
   color: #fff;
-  max-width: 520px;
-  margin-left: auto;
+  width: 100%;
+  max-width: 900px;   /* antes 520px */
+  margin-left: 200px;
   margin-right: auto;
+  margin-top: 170px;
 }
 .fdf-title {
   font-size: 20px;
@@ -23,29 +25,32 @@
 .fdf-row {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 8px 0;
+  justify-content: space-between; /* agrega espacio uniforme */
+  gap: 24px; /* más aire */
+  padding: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
+
 .fdf-row:last-child {
   border-bottom: none;
 }
 .fdf-day {
-  width: 60px;
+  width: 70px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  text-align: left;
 }
 .fdf-icon img {
   width: 36px;
   height: 36px;
 }
 .fdf-desc {
-  width: 70px;
+  flex: 1;
   font-size: 15px;
   color: #b0b0b0;
   text-align: left;
-  text-transform: capitalize;
 }
+
 .fdf-temp-bar {
   display: flex;
   align-items: center;
@@ -54,17 +59,16 @@
 }
 .fdf-temp-min, .fdf-temp-max {
   font-size: 15px;
-  color: #b0b0b0;
-  min-width: 28px;
-  text-align: center;
+  font-weight: 600;
+  min-width: 40px;
 }
 .fdf-bar-bg {
   background: #23233a;
   border-radius: 6px;
   height: 8px;
   flex: 1;
-  min-width: 40px;
-  max-width: 120px;
+  min-width: 80px;   /* más ancho */
+  max-width: 300px;  /* más espacio horizontal */
   position: relative;
   overflow: hidden;
 }
